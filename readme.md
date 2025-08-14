@@ -25,7 +25,7 @@ This report explores a dataset of U.S. medical insurance charges and analyzes ho
    ```sh
    jupyter notebook notebooks/Medical_Insurance_Costs_Report.ipynb
    ```  
-4. Or open the static HTML report:  
+  Or open the static HTML report:  
    ```sh
    open reports/Medical_Insurance_Costs_Report.html
    ```  
