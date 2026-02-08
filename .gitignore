@@ -5,8 +5,9 @@ __pycache__/
 # Jupyter checkpoints
 *.ipynb_checkpoints/
 
-# CSV files
+# CSV files (except the project dataset)
 *.csv
+!insurance.csv
 
 # Environment files
 .env
