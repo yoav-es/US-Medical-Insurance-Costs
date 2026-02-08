@@ -1,0 +1,26 @@
+name: CI
+on:
+  push:
+    branches: [ main, master, cursor-refactor ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+      - name: Register ipykernel
+        run: python -m ipykernel install --user --name=python3
+      - name: Run tests
+        run: pytest -q
+      - name: Execute notebook
+        run: python -m nbconvert --ClearOutputPreprocessor.enabled=True --to notebook --execute us-medical-insurance-costs.ipynb --ExecutePreprocessor.timeout=600 --output report.ipynb
+      - name: Export HTML
+        run: python -m nbconvert --to html report.ipynb --output report.html

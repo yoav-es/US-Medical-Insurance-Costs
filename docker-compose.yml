@@ -1,0 +1,8 @@
+version: \"3.8\"
+services:
+  report:
+    build: .
+    volumes:
+      - .:/app
+    working_dir: /app
+    command: sh -c \"python -m nbconvert --to notebook --execute us-medical-insurance-costs.ipynb --ExecutePreprocessor.timeout=600 --output report.ipynb && python -m nbconvert --to html report.ipynb --output report.html\"
