@@ -14,16 +14,10 @@ def group_by_smoker_charges(df: pd.DataFrame) -> pd.DataFrame:
 
 
 def compute_region_stats(df: pd.DataFrame) -> tuple[pd.DataFrame, str]:
-    """Compute overall and region-level statistics.
+    """Compute region-level statistics.
 
     Returns (region_stats, region_with_max_cost)
     """
-    yearly_charge_mean = df["charges"].mean()
-    yearly_charge_median = df["charges"].median()
-    yearly_charge_sd = df["charges"].std()
-    q1, med, q3 = df["charges"].quantile([0.25, 0.5, 0.75])
-    yearly_cost_iqr = q3 - q1
-
     region_stats = (
         df.groupby("region", observed=True)["charges"]
         .agg(mean_charge="mean", sd_cost="std", count="size")
