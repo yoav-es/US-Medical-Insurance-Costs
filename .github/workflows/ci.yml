@@ -20,6 +20,8 @@ jobs:
         run: python -m ipykernel install --user --name=python3
       - name: Run tests
         run: pytest -q
+      - name: Fix notebook output metadata
+        run: python scripts/fix_notebook_metadata.py
       - name: Execute notebook
         run: python -m nbconvert --ClearOutputPreprocessor.enabled=True --to notebook --execute us-medical-insurance-costs.ipynb --ExecutePreprocessor.timeout=600 --output report.ipynb
       - name: Export HTML
