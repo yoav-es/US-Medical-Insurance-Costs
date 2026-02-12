@@ -56,7 +56,7 @@ def plot_bmi_stats(bmi_stats, out_path: Path | str = None):
     ax1.set_ylabel("Count of Records", color="skyblue")
     ax1.set_xlabel("BMI Class (Patient Count)")
     ax2 = ax1.twinx()
-    sns.pointplot(data=bmi_stats.reset_index(), x="bmi_class", y="mean_charge", color="crimson", marker="o", ax=ax2)
+    sns.pointplot(data=bmi_stats.reset_index(), x="bmi_class", y="mean_charge", color="crimson", markers="o", ax=ax2)
     ax2.set_ylabel("Average Charges (USD)")
     fig.tight_layout()
     if out_path:

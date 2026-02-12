@@ -36,7 +36,7 @@ def compute_bmi_stats(df: pd.DataFrame, bins=None, labels=None) -> tuple[pd.Data
     if labels is None:
         labels = ["Underweight", "Healthy", "Overweight", "Obese"]
     df = df.copy()
-    df["bmi_class"] = pd.cut(df["bmi"], bins=bins, labels=labels, right=True)
+    df["bmi_class"] = pd.cut(df["bmi"], bins=bins, labels=labels, right=False)
     bmi_stats = (
         df.groupby("bmi_class", observed=True)["charges"]
         .agg(
@@ -60,7 +60,7 @@ def compute_smoker_bmi_stats(df: pd.DataFrame) -> tuple[pd.DataFrame, float, flo
     if "bmi_class" not in d.columns:
         bins = [0, 18.5, 25, 30, float("inf")]
         labels = ["Underweight", "Healthy", "Overweight", "Obese"]
-        d["bmi_class"] = pd.cut(d["bmi"], bins=bins, labels=labels, right=True)
+        d["bmi_class"] = pd.cut(d["bmi"], bins=bins, labels=labels, right=False)
     mean_table = d.pivot_table(index="bmi_class", columns="smoker", values="charges", aggfunc="mean")
     if "yes" in mean_table.columns and "no" in mean_table.columns:
         mean_table["gap_pct"] = (mean_table["yes"] / mean_table["no"] - 1) * 100
