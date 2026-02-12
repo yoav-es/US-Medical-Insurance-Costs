@@ -1,65 +1,47 @@
-# U.S. Medical Insurance Costs
+# U.S. Medical Insurance Costs Analysis Report
 
-This project analyzes U.S. medical insurance costs by examining how geographic region, BMI categories, and smoking status influence annual charges. Key summary statistics and cross-tabulations reveal which factors drive higher expenses and how they interact. The dataset is sourced from a Kaggle exercise and is based on simulated U.S. insurance records.
+This report explores a dataset of U.S. medical insurance charges and analyzes how factors like age, gender, BMI, children, smoking status, and region impact insurance costs. It uses Python, Pandas, Matplotlib, Seaborn, and scikit-learn within a Jupyter notebook as an interactive report.
 
-## Features
+## Report Highlights
 
-* Computes mean, median, standard deviation, and IQR of charges per region.
-* Groups patients by BMI category (Underweight, Healthy, Overweight, Obese) and compares costs.
-* Builds pivot tables and correlations showing how smoking amplifies BMI-driven costs.
-* Produces bar charts, histograms, and dual-axis plots with a unified figure size.
+- Data cleaning and preprocessing  
+- Exploratory Data Analysis (EDA) with summary statistics and visualizations  
+- Regression modeling and insights (e.g., linear regression, random forest)  
+- Visualizations illustrating key findings (distribution plots, scatter plots, heatmaps)  
+- Discussion of factor impacts on insurance costs  
 
-## Prerequisites
+## Viewing the Report
 
-* Python 3.10+
-* pandas
-* matplotlib
-* seaborn
-* Jupyter Notebook / nbconvert
-
-## Installation
-
-Clone the repository and install the required packages:
-
-    git clone https://github.com/yoav-es/U.S.-Medical-Insurance-Costs.git
-    cd "U.S. Medical Insurance Costs"
-    pip install -r requirements.txt
-
-## Usage
-
-Launch the Jupyter Notebook to run the analysis step-by-step:
-
-    jupyter notebook us-medical-insurance-costs.ipynb
-
-Or generate an executed report from the command line:
-
-    python -m nbconvert --to notebook --execute us-medical-insurance-costs.ipynb --output report.ipynb
-    python -m nbconvert --to html report.ipynb --output report.html
-
-To run the test suite:
-
-    pytest -q
-
-To build and run via Docker:
-
-    docker compose build
-    docker compose run --rm report
+1. Clone the repository:  
+   ```sh
+   git clone https://github.com/yourusername/insurance_costs_analysis.git  
+   cd insurance_costs_analysis
+   ```  
+2. Install dependencies:  
+   ```sh
+   pip install -r requirements.txt
+   ```  
+3. Launch the interactive notebook:  
+   ```sh
+   jupyter notebook notebooks/Medical_Insurance_Costs_Report.ipynb
+   ```  
+   Or open the static HTML report:  
+   ```sh
+   open reports/Medical_Insurance_Costs_Report.html
+   ```  
 
 ## Files
 
-* **us-medical-insurance-costs.ipynb** — Main analysis notebook
-* **insurance_costs/** — Reusable Python package (data I/O, processing, analysis, visualization)
-* **tests/** — pytest test suite
-* **requirements.txt** — Runtime and development dependencies
-* **pyproject.toml** — Package metadata and dev extras
-* **Dockerfile** / **docker-compose.yml** — Reproducible report generation
-* **scripts/** — Docker helper scripts for Linux/macOS and Windows
-* **.github/workflows/ci.yml** — CI pipeline: tests and notebook execution
+- `notebooks/Medical_Insurance_Costs_Report.ipynb` — Interactive report notebook  
+- `reports/Medical_Insurance_Costs_Report.html` — Static HTML version of the report  
+- `data/insurance.csv` — Data file (not included; obtain from [Kaggle](https://www.kaggle.com/datasets/mirichoi0218/insurance))  
+- `requirements.txt` — Python dependencies  
+- `README.md` — This file  
 
 ## Data Source
 
-The dataset is available on [Kaggle](https://www.kaggle.com/datasets/mirichoi0218/insurance). Place `insurance.csv` in the project root before running.
+This report uses the Medical Cost Personal Dataset from Kaggle: https://www.kaggle.com/datasets/mirichoi0218/insurance  
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License – see the [LICENSE](LICENSE) file for details.
