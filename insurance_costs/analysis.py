@@ -1,5 +1,9 @@
 import pandas as pd
 
+# WHO BMI classification (used consistently by compute_bmi_stats and compute_smoker_bmi_stats)
+BMI_BINS = [0, 18.5, 25, 30, float("inf")]
+BMI_LABELS = ["Underweight", "Healthy", "Overweight", "Obese"]
+
 
 def summary_stats(df: pd.DataFrame) -> pd.DataFrame:
     '''Return descriptive statistics for numeric columns.'''
@@ -32,9 +36,9 @@ def compute_region_stats(df: pd.DataFrame) -> tuple[pd.DataFrame, str]:
 def compute_bmi_stats(df: pd.DataFrame, bins=None, labels=None) -> tuple[pd.DataFrame, float]:
     """Compute BMI class statistics. Returns (bmi_stats, overall_mean)."""
     if bins is None:
-        bins = [0, 18.5, 25, 30, float("inf")]
+        bins = BMI_BINS
     if labels is None:
-        labels = ["Underweight", "Healthy", "Overweight", "Obese"]
+        labels = BMI_LABELS
     df = df.copy()
     df["bmi_class"] = pd.cut(df["bmi"], bins=bins, labels=labels, right=False)
     bmi_stats = (
@@ -56,11 +60,9 @@ def compute_bmi_stats(df: pd.DataFrame, bins=None, labels=None) -> tuple[pd.Data
 def compute_smoker_bmi_stats(df: pd.DataFrame) -> tuple[pd.DataFrame, float, float]:
     """Return pivot table of mean charges by bmi_class and smoker, plus correlations (smokers, nonsmokers)."""
     d = df.copy()
-    # ensure bmi_class exists
+    # ensure bmi_class exists (uses same classification as compute_bmi_stats)
     if "bmi_class" not in d.columns:
-        bins = [0, 18.5, 25, 30, float("inf")]
-        labels = ["Underweight", "Healthy", "Overweight", "Obese"]
-        d["bmi_class"] = pd.cut(d["bmi"], bins=bins, labels=labels, right=False)
+        d["bmi_class"] = pd.cut(d["bmi"], bins=BMI_BINS, labels=BMI_LABELS, right=False)
     mean_table = d.pivot_table(index="bmi_class", columns="smoker", values="charges", aggfunc="mean")
     if "yes" in mean_table.columns and "no" in mean_table.columns:
         mean_table["gap_pct"] = (mean_table["yes"] / mean_table["no"] - 1) * 100
