@@ -24,7 +24,7 @@ def compute_region_stats(df: pd.DataFrame) -> tuple[pd.DataFrame, str]:
     """
     region_stats = (
         df.groupby("region", observed=True)["charges"]
-        .agg(mean_charge="mean", sd_cost="std", count="size")
+        .agg(mean_charge="mean", sd_charge="std", count="size")
         .assign(pct_share=lambda d: d["count"] / len(df) * 100)
         .reset_index()
     )

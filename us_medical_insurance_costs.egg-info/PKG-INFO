@@ -1,0 +1,15 @@
+Metadata-Version: 2.4
+Name: us-medical-insurance-costs
+Version: 1.0.0
+Summary: Analyse U.S. medical insurance costs by region, BMI, and smoking status
+Requires-Python: >=3.10
+License-File: license
+Requires-Dist: pandas>=1.5
+Requires-Dist: matplotlib>=3.6
+Requires-Dist: seaborn>=0.12
+Provides-Extra: dev
+Requires-Dist: pytest>=7.0; extra == "dev"
+Requires-Dist: nbconvert>=7.0; extra == "dev"
+Requires-Dist: ipykernel>=6.0; extra == "dev"
+Requires-Dist: pre-commit>=3.0; extra == "dev"
+Dynamic: license-file

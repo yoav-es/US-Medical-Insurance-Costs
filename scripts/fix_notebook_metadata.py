@@ -10,7 +10,7 @@ def main():
     fixed = 0
     for cell in nb.get("cells", []):
         for out in cell.get("outputs", []):
-            if isinstance(out, dict) and "metadata" not in out:
+            if isinstance(out, dict) and out.get("output_type") in ("display_data", "execute_result") and "metadata" not in out:
                 out["metadata"] = {}
                 fixed += 1
 
