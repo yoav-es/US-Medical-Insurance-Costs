@@ -44,8 +44,8 @@ This project analyzes individual medical charges using demographic and health in
 
 1. Clone the repository
    ```bash
-   git clone [https://github.com/yourusername/insurance_costs_analysis.git](https://github.com/yourusername/insurance_costs_analysis.git)
-   cd insurance_costs_analysis
+   git clone [https://github.com/yoav-es/US-Medical-Insurance-Costs.git](https://github.com/yoav-es/US-Medical-Insurance-Costs.git)
+   cd US-Medical-Insurance-Costs
    ```
 
 2. Create a virtual environment and install dependencies
